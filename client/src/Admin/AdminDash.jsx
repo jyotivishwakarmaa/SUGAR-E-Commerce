@@ -1,62 +1,66 @@
 import React from "react";
-// import "../styles/AdminDashboard.css";
+import Button from "react-bootstrap/Button";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
 
-const AdminDashboard = () => {
+
+const AdminDash = () => {
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
-    <div className="admin-dashboard">
-      <aside className="admin-sidebar">
-        <div className="logo">
-          <h2>SUGAR</h2>
+    <>
+      <div id="mainPG">
+        <div id="topvar">
+          <h3>Dashboard!</h3>
+          <h2>
+            Welcome! Admin <BsFillEmojiSmileFill />
+            {localStorage.getItem("adminuser")}
+          </h2>
+          <Button id="btn2" onClick={logout}>
+            Log out!
+          </Button>
         </div>
-        <ul className="sidebar-links">
-          <li className="active">Dashboard</li>
-          <li>Orders</li>
-          <li>Products</li>
-          <li>Categories</li>
-          <li>Customers</li>
-          <li>Settings</li>
-          <li>Logout</li>
-        </ul>
-      </aside>
+        <hr style={{ color: "white" }} />
 
-      <div className="admin-main">
-        <header className="admin-header">
-          <h1>Dashboard Overview</h1>
-          <p>Hello, Jyoti 👋</p>
-        </header>
+        <div className="sidetab">
+          
+            <ul>
+              <li>
+                <Link to="users" id="link">
+                  Users
+                </Link>
+              </li>
 
-        <section className="dashboard-stats">
-          <div className="stat-card pink">
-            <h3>Total Sales</h3>
-            <p>₹2,49,300</p>
-          </div>
-          <div className="stat-card gray">
-            <h3>Orders</h3>
-            <p>1,238</p>
-          </div>
-          <div className="stat-card pink">
-            <h3>New Users</h3>
-            <p>384</p>
-          </div>
-          <div className="stat-card gray">
-            <h3>Products</h3>
-            <p>148</p>
-          </div>
-        </section>
+              <li>
+                <Link to="addproduct" id="link">
+                  Add Product
+                </Link>
+              </li>
 
-        <section className="dashboard-panel">
-          <div className="panel-card">
-            <h3>Recent Orders</h3>
-            <p>+ View all orders</p>
+              <li>
+                <Link to="setting" id="link">
+                  Settings
+                </Link>
+              </li>
+
+              <li>
+                <Link to="logout" id="link">
+                  Logout
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="panel-card">
-            <h3>Inventory Low Stock</h3>
-            <p>+ View low stock</p>
-          </div>
-        </section>
+        
+        <Outlet />
       </div>
-    </div>
+    </>
   );
 };
 
-export default AdminDashboard;
+export default AdminDash;

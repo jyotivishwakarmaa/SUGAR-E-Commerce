@@ -4,6 +4,7 @@ import '../src/css/style.css'
 import Layout from '../Layout'
  import AdminDash from './Admin/AdminDash'
 import AdminLogin from './Admin/AdminLogin';
+import AddProduct from './Admin/AddProducts';
 
 function App() {
 
@@ -17,10 +18,20 @@ function App() {
         </Routes>
 
         <Routes>
-          <Route path="adminlogin" element={<AdminLogin />} />
-          <Route path="admindash" element={<AdminDash />} >
+          <Route path="adminlogin" element={<AdminLogin />} >
+       
           </Route>
         </Routes>
+
+        
+ 
+         <Routes>
+          <Route path='admindash' element={<AdminDash/>}>
+          
+          <Route  path='addproduct' element={<AddProduct/>} />
+
+          </Route>
+        </Routes> 
       </BrowserRouter>
     </>
   );
