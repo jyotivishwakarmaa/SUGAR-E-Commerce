@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { BsFillEmojiSmileFill } from "react-icons/bs";
-
+import { LuLogOut } from "react-icons/lu";
+import { FaRegUserCircle } from "react-icons/fa";
+import { FiPackage } from "react-icons/fi";
+import { RiSettings5Line } from "react-icons/ri";
 
 const AdminDash = () => {
 
@@ -17,46 +19,42 @@ const AdminDash = () => {
     <>
       <div id="mainPG">
         <div id="topvar">
-          <h3>Dashboard!</h3>
-          <h2>
-            Welcome! Admin <BsFillEmojiSmileFill />
-            {localStorage.getItem("adminuser")}
-          </h2>
+          <h3>ADMIN Dashboard!</h3>
+
           <Button id="btn2" onClick={logout}>
-            Log out!
+            <LuLogOut /> Log out!
           </Button>
         </div>
-        <hr style={{ color: "white" }} />
-
+        {/* <hr style={{ color: "white" }} /> */}
+        <h2 style={{ color: "white" }}>Welcome!</h2>
         <div className="sidetab">
-          
-            <ul>
-              <li>
-                <Link to="users" id="link">
-                  Users
-                </Link>
-              </li>
+          <ul>
+            <li>
+              <Link to="users" id="link">
+                <FaRegUserCircle /> Users
+              </Link>
+            </li>
 
-              <li>
-                <Link to="addproduct" id="link">
-                  Add Product
-                </Link>
-              </li>
+            <li>
+              <Link to="addproduct" id="link">
+                <FiPackage /> Add Product
+              </Link>
+            </li>
 
-              <li>
-                <Link to="setting" id="link">
-                  Settings
-                </Link>
-              </li>
+            <li>
+              <Link to="setting" id="link">
+                <RiSettings5Line /> Settings
+              </Link>
+            </li>
 
-              <li>
-                <Link to="logout" id="link">
-                  Logout
-                </Link>
-              </li>
-            </ul>
-          </div>
-        
+            <li>
+              <Link to="logout" id="link">
+                <LuLogOut /> Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         <Outlet />
       </div>
     </>

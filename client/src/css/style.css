@@ -298,7 +298,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../Admin/adminimages/logback.jpg');
+    background: url('../Admin/adminimages/img2.jpg') no-repeat center center / cover;
     /* background: linear-gradient(135deg, #c3ecf9, #fbc2eb); */
     /* background: linear-gradient(135deg, #dfec9e, #2b622e); */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -307,18 +307,19 @@
   /* Login form styling */
   .login-form {
     /* background-color: #94a084; */
-    background: transparent;
+    background: rgba(0, 0, 0, 0.6);
     padding: 40px 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
     width: 100%;
     max-width: 500px;
+    border: 2px solid black;
   }
   
   .login-form h1 {
     text-align: center;
     margin-bottom: 25px;
-    color: #333;
+    color: whitesmoke
   }
   
   /* Input container */
@@ -368,7 +369,7 @@
   
   /* Button hover */
   .login-form button:hover {
-    /* background: linear-gradient(to right, #a044ff, #6a00f4); */
+    color: black;
     background-color: lightgreen;
   }
 
@@ -378,7 +379,7 @@
 
 #mainPG{
     height: 100vh;
-    background: url('../Admin//adminimages/back.jpg') no-repeat center center / cover
+    background: url('../Admin//adminimages/jyotii.jpg') no-repeat center center / cover
    
 }
 
@@ -386,40 +387,40 @@
 
     background-color: rgba(0,0,0,0.5);
     color: aliceblue;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
     height: 80px;
     padding-top: 10px;
+    align-items: center;
 }
-#topvar h2{
-    margin-left: 20px;
-    color:#91c891;
-    text-align: center;
-}
+/* 
 #topvar h3{
   margin-left: 20px;
   color:antiquewhite;
   text-align: center;
-}
-
+} */
 
 #btn2{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    /* padding-top: 0;
+    padding-bottom: 0; */
     background-color: red;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-right: 20px;
     color: black;
     border: none;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #btn2:hover{
-    color: red;
-    background-color: black;
+    color: black;
+    background-color: pink;
 }
 
 
@@ -428,61 +429,149 @@
 #contain{
   margin: auto;
   width: 25%;
-  /* margin-top: 30px; */
+  margin:auto;
   border: 2px;
   border-radius: 10px;
   align-items: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-  /* background-color: rgba(0, 0, 0, 0.3); */
+ 
 }
+
 #frm{
   color: white;
   padding-left: 20px;
   font-weight: 500;
-  letter-spacing: 1px;
   padding-right: 20px;
   padding-top: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
   padding-bottom: 20px;
+  position: absolute;
+  top: 105px;
+  
 }
+
 #frm h2{
   color:whitesmoke;
   text-align: center;
 }
+
 #btn{
-  color: rgb(150, 186, 217);
-  background-color: black;
+  
+  color: black;
+  background-color:  rgb(150, 186, 217);
   border: none;
   font-weight: 500;
   font-size: 18px;
 }
-#btn:hover{
 
-  color: black;
-  background-color:  rgb(150, 186, 217);
+#btn:hover{
+  color: white;
+  background-color: rgb(216, 128, 128);
 }
+  
 
 /* =================================Sidebar================================== */
 
 .sidetab{
-  width: 100px;
-  display: flex;
-  margin-right: 0;
-  height: 0px;
-  flex-direction: column;
+max-width: 100px;
+background: transparent;
+
 }
 .sidetab ul{
-  width: 200px;
+  display: flex;
+  width: 150%;
+  text-align: center;
   flex-direction: column;
-  height: 850px;
+  gap: 30px;
   margin-right: 0;
+  height: 650px;
+  margin-left: 0;
   padding-left: 0;
   padding-right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 }
+
 .sidetab li{
 background:none;
+
 }
 
 .sidetab li #link{
   color: white;
   text-decoration: none;
+}
+.sidetab li #link:hover{
+  color: #ff5b77;
+}
+/* ====================================== userloginform ==================================== */
+
+.login-containerr{
+  min-height: 100vh;
+  background: url('../User/userimages/img1.jpg') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.login-form {
+  /* background-color: #94a084; */
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid black;
+}
+
+/* ============================================ userdash ======================================== */
+
+
+#dash{
+
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.3);
+  color:bisque;
+  height: 80px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  align-items: center;
+  font-size: 25px;
+
+}
+#dash h2{
+  margin-left: 20px;
+}
+#btn4{
+ 
+  background: red;
+  color: black;
+  margin-right: 20px;
+  font-family:'Times New Roman', Times, serif;
+  height: 40px;
+  font-weight: 700;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+
+.dashPG{
+
+  background: url('../Admin/adminimages/rm.jpg') no-repeat center center / cover;
+  height: 100vh;
+
+}
+.dashPG h1{
+
+  color: rgb(154, 241, 212);
+  text-align: center;
+  padding-top: 50px;
 }

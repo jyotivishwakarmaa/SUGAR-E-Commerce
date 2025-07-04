@@ -37,7 +37,7 @@ const AdminLogin = () => {
           <h1>Admin Login</h1>
 
           <div className="form-group">
-            <label>Enter ID</label>
+            <label style={{ fontSize: "20px" }}>Enter ID</label>
             <input
               type="text"
               value={adminId}
@@ -48,7 +48,7 @@ const AdminLogin = () => {
           </div>
 
           <div className="form-group">
-            <label>Enter Password</label>
+            <label style={{ fontSize: "20px" }}>Enter Password</label>
             <input
               type="password"
               value={password}

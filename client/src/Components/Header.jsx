@@ -2,10 +2,17 @@ import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import { FaHouseUser } from "react-icons/fa";
 import { BsFillBagHeartFill } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GoHeartFill } from "react-icons/go";
 
 const Header = () => {
+
+  const nav=useNavigate()
+  function handleUser(){
+     nav('/userLogin')
+
+  }
+
   return (
     <>
       <div id="top">
@@ -14,7 +21,7 @@ const Header = () => {
 
           <div id="icon1">
             <FaSearch />
-            <FaHouseUser />
+            <FaHouseUser onClick={handleUser}/>
             <GoHeartFill />
             <BsFillBagHeartFill />
           </div>

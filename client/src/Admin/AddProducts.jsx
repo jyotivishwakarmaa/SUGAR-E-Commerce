@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import BackEndUrl from '../utils/BackEndUrl';
 import axios from 'axios';
+import { Radius } from 'lucide-react';
 const AddProducts = () => {
     
     const[inp,setInp]=useState({})
@@ -54,23 +55,23 @@ const AddProducts = () => {
         <Form id='frm' >
           <h2>Add Product</h2>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label id='lavel'>Enter Product name</Form.Label>
-            <Form.Control type="text" name='name' onChange={handleInput} />
+            <Form.Label id='lavel' >Enter Product name</Form.Label>
+            <Form.Control type="text" name='name' placeholder='Product name' onChange={handleInput}  />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Enter Product description</Form.Label>
-            <Form.Control type="text" name='description' onChange={handleInput} />
+            <Form.Control type="text" name='description' placeholder='Description' onChange={handleInput} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Enter Price</Form.Label>
-            <Form.Control type="number" name='price' onChange={handleInput} />
+            <Form.Control type="number" name='price' placeholder='Price' onChange={handleInput} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Label>Select Category</Form.Label> <br />
-            <select name="category" onChange={handleInput} style={{width:"200px"}} >
+            <select name="category" onChange={handleInput} style={{width:"200px", padding:"8px", borderRadius:"6px"}} >
               Category
               <option value="">category</option>
               <option value="eyes">Eyes</option>
