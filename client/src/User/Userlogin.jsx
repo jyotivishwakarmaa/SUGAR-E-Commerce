@@ -40,7 +40,9 @@ const Userlogin = () => {
 
   return (
     <>
+
       <div className="login-containerr">
+ 
         <div className="login-form">
           <h1>User Login</h1>
 
@@ -67,7 +69,7 @@ const Userlogin = () => {
                 setPassword(e.target.value);
               }}
             />
-            <p style={{ color: "white", textAlign: "left", cursor: "pointer" }}>
+            <p style={{ color: "white", textAlign: "left", cursor: "pointer"}}>
               Forgot Password
             </p>
           </div>

@@ -21,8 +21,10 @@ const AdminLogin = () => {
         adminId: adminId,
         password: password,
       });
-      localStorage.setItem("adminid", response.data.adminId);
+      localStorage.setItem("adminid", response.data.admin._id);
       console.log(response.data.msg);
+      console.log(response.data)
+      localStorage.setItem('token',response.data.token)
 
       navigate("/admindash");
     } catch (error) {

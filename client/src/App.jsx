@@ -1,17 +1,16 @@
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import '../src/css/style.css'
-import Layout from '../Layout'
-import AdminDash from './Admin/AdminDash'
-import AdminLogin from './Admin/AdminLogin';
-import AddProduct from './Admin/AddProducts';
-import Userlogin from './User/Userlogin';
-import UserDash from './User/UserDash';
-import UserRegister from './User/UserRegister';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "../src/css/style.css";
+import Layout from "../Layout";
+import AdminDash from "./Admin/AdminDash";
+import AdminLogin from "./Admin/AdminLogin";
+import AddProduct from "./Admin/AddProducts";
+import Userlogin from "./User/Userlogin";
+import UserDash from "./User/UserDash";
+import UserRegister from "./User/UserRegister";
+import Home from "./Components/Home";
+import AddToCart from "./Redux/AddToCart";
 
 function App() {
-
-
   return (
     <>
       <BrowserRouter>
@@ -19,6 +18,9 @@ function App() {
           <Route path="/" element={<Layout />}></Route>
         </Routes>
 
+        <Routes>
+          <Route path="addtocart" element={<AddToCart />} />
+        </Routes>
         <Routes>
           <Route path="adminlogin" element={<AdminLogin />}></Route>
         </Routes>
@@ -30,21 +32,19 @@ function App() {
         </Routes>
 
         <Routes>
-        <Route path="userregis" element={<UserRegister />}/>
-         
+          <Route path="userregis" element={<UserRegister />} />
         </Routes>
 
         <Routes>
-        <Route path="userdash" element={<UserDash />}/>
+          <Route path="userdash" element={<UserDash />} />
         </Routes>
 
-
         <Routes>
-           <Route path="userlogin" element={<Userlogin />}/>
+          <Route path="userlogin" element={<Userlogin />} />
         </Routes>
       </BrowserRouter>
     </>
   );
 }
 
-export default App
+export default App;

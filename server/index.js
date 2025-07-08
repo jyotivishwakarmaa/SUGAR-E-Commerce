@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const adminRoute = require('./Routes/AdminRoute');
 const userRoute = require('./Routes/UserRoute')
+const productRoute =require('./Routes/ProductRoute')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cors());
@@ -20,6 +21,7 @@ mongoose.connect(process.env.DBCON).then(()=>{
 
 app.use('/admin', adminRoute)
 app.use('/user', userRoute)
+app.use('/product', productRoute)
 app.listen(Port, ()=>{
     console.log(`server run on ${Port}!!`);
     

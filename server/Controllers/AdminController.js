@@ -1,16 +1,18 @@
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const ProductModel = require('../Models/ProductModel')
 const adminModel = require('../Models/AdminModel')
+const jwt=require('jsonwebtoken')
 const cloudinary = require('../cloudnary');
-const multer =require('multer')
+const multer =require('multer');
+const { response } = require('express');
 
 // MULTER STORAGE SETUP
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'JyotiiiPhotos',
-    format: async (req, file) => 'jpeg',                              //  ✅ fix: param should be `(req, file)`
-    public_id: (req, file) => Date.now() + '-' + file.originalname    // ✅ fix: use `file.originalname`
+    format: async (req, file) => 'jpeg',                                //  ✅ fix: param should be `(req, file)`
+    public_id: (req, file) => Date.now() + '-' + file.originalname      // ✅ fix: use `file.originalname`
   }
 });
 
@@ -23,22 +25,38 @@ const AdminLogin = async(req, res)=>{
     console.log(req.body);
     // res.send('okkk')
 
-    const admin = await adminModel.findOne({adminId});
+    const admin = await adminModel.findOne({adminid:adminId});
     console.log(admin);
-    res.send("okk")
+ 
     
-    //  if(!admin){
-    //    res.status(400).send({msg: "Invalid ID!!"})
-    //  }
-    //  if(admin.password != password){
-    //    res.status(400).send({msg: "Invalid password!!"})
-    //  }
+      if(!admin){
+        res.status(400).send({msg: "Invalid ID!!"})
+      }
+      if(admin.password != password){
+        res.status(400).send({msg: "Invalid password!!"})
+      }
+    const token=await jwt.sign({id:admin._id},process.env.JWT,{expiresIn:'20days'})
+    console.log(token)
+     res.status(200).send({admin, token,msg: "Login Successfully!!"})
     
-    // res.status(200).send({admin, mag: "Login Successfully!!"})
-    // res.send(200).send(admin);
+
+}     
+  //JWT Authentication
+
+const Auth = async (req, res) => {
+  const token = req.header("x-token");
+  console.log(token);
+        
+     if(!token) return res.json(false);
 
 
-}
+  const verify = await jwt.verify(token, process.env.JWT);
+    if(!verify) return res.json(false)
+  console.log(verify);
+
+  const user = await adminModel.findById(verify.id).select("-password");
+  res.send(user);
+};
 
 // Upload Product Images
 const saveProduct = async (req, res) => {
@@ -58,7 +76,7 @@ const saveProduct = async (req, res) => {
 
       const Product = new ProductModel({
         name: name,
-        description: name,
+        description: description,
         price: price,
         category: category,
         images: imageURL,
@@ -73,10 +91,11 @@ const saveProduct = async (req, res) => {
   });
 };
 
-
+ 
 
 
 module.exports = {
   AdminLogin,
   saveProduct,
+  Auth
 };
