@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import BackEndUrl from '../utils/BackEndUrl';
 import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Userlogin = () => {
 
@@ -29,20 +31,25 @@ const Userlogin = () => {
           email: email,
           password: password,
         });
+
+
         localStorage.setItem("email", response.data.email);
         console.log(response.data.msg);
+        
+         console.log(response.data);
+         localStorage.setItem("userToken", response.data.token);
+
+         toast.success("User Login Successfully!");
 
         navigate("/userdash");
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data.msg);
       }
     };
 
   return (
     <>
-
       <div className="login-containerr">
- 
         <div className="login-form">
           <h1>User Login</h1>
 
@@ -64,12 +71,13 @@ const Userlogin = () => {
               type="password"
               placeholder="Password"
               value={password}
-              autoComplete="akki"
+              autoComplete="current-password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <p style={{ color: "white", textAlign: "left", cursor: "pointer"}}>
+
+            <p style={{ color: "white", textAlign: "left", cursor: "pointer" }}>
               Forgot Password
             </p>
           </div>
@@ -80,8 +88,10 @@ const Userlogin = () => {
           <p style={{ color: "white", textAlign: "left", cursor: "pointer" }}>
             Don't have an account?
           </p>
-          <button onClick={handleRegistration}>Register</button>
+          <button onClick={handleRegistration}>Register Now</button>
         </div>
+
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </>
   );

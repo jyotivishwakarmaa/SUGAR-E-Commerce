@@ -13,21 +13,24 @@ const UserDash = () => {
 
   const logout = () => {
     localStorage.clear();
+
     navigate("/");
   };
+
+
 
   return (
     <>
       <div id="mainPG">
         <div id="topvar">
-          <h3>USER Dashboard!</h3>
+          <h3>Welcome to USER DASHBOARD!</h3>
 
           <Button id="btn2" onClick={logout}>
             <LuLogOut /> Log out!
           </Button>
         </div>
         {/* <hr style={{ color: "white" }} /> */}
-        <h2 style={{ color: "white" }}>Welcome!</h2>
+        <h3 style={{ color: "pink" }}>Welcome!</h3>
         <div className="sidetab">
           <ul>
             <li>
@@ -50,12 +53,12 @@ const UserDash = () => {
 
             <li>
               <Link to="setting" id="link">
-                <TbHelpTriangleFilled />   Help
+                <TbHelpTriangleFilled /> Help
               </Link>
             </li>
 
             <li>
-              <Link to="setting" id="link">
+              <Link to="setting" id="link" onClick={logout}>  
                 <RiSettings5Line /> Settings
               </Link>
             </li>

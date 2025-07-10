@@ -1,40 +1,46 @@
 import React from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
-import {dataIncrease, dataDecrease} from '../Redux/cartSlice'
+import {dataIncrease, dataDecrease, itemRemove} from '../Redux/cartSlice'
 import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
 import { FaRupeeSign } from "react-icons/fa";
-import Header from '../Components/Header';
+import { Outlet, useNavigate } from 'react-router-dom';
+import Imageslide from '../Components/imageslide';
 
 const AddToCart = () => {
-<Header />;
+
+  const navigate = useNavigate()
   const cartData = useSelector(state=>state.mycart.cart);
   const dispatch = useDispatch();
 
    let totalAmount = 0;
+
    const ans = cartData.map((key)=>{
+    totalAmount += key.price * key.qnty;
      return (
        <>
        
         <tr>
           <td>
-            <img src={key.defaultImage} width="100px" height="100px" />
+            <img src={key.defaultimage} width="100px" height="100px" />
           </td>
           <td>{key.name}</td>
           <td>{key.description}</td>
           <td>{key.category}</td>
           <td>{key.price}</td>
-          <td>
-            <FaSquarePlus onClick={()=>{dispatch(dataIncrease({id:key.id}))}} />
-              {key.qnty}
-              <FaSquareMinus onClick={()=>{dispatch(dataDecrease({id:key.id}))}} />
+          <td style={{fontSize:"20px"}}>
+            <FaSquarePlus  onClick={()=>{dispatch(dataIncrease({id:key.id}))}} />  
+            
+            {key.qnty}
+
+            <FaSquareMinus onClick={()=>{dispatch(dataDecrease({id:key.id}))}} />
           </td>
     
           <td> {key.qnty * key.price} </td>
          
          <td>
-          <Button onClick={()=>{dispatch(itemRemove({id:key.id}))}}>Remove</Button>
+          <button onClick={()=>{dispatch(itemRemove({id:key.id}))}}>Remove</button>
          </td>
         </tr>
       </>
@@ -43,40 +49,70 @@ const AddToCart = () => {
 
   return (
     <>
+
+    <img src="src/images/ban4.webp" style={{width:"100%", height:"500px"}} />
       <div id="cart-head">
-        <h1>Our Cart Data</h1>
+        <h1>CART</h1>
       </div>
-      <Table striped bordered hover>
+
+      {/* <Imageslide /> */}
+      <Outlet />
+
+      <Table hover>
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Product name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total price</th>
-            <th></th>
+            <th>PRODUCT</th>
+            <th>PRODUCT NAME</th>
+            <th>DESCRIPTION</th>
+            <th>CATEGORY</th>
+            <th>PRICE</th>
+            <th>QUANTITY</th>
+            <th>TOTAL</th>
+            <th>REMOVE ITEM</th>
           </tr>
         </thead>
         <tbody>
           {ans}
           <tr>
             <th colSpan="6">
-              <b>Total Price: </b>
+              <b style={{ marginLeft: "50px" }}>TOTAL AMOUNT: </b>
             </th>
 
             <th>{totalAmount}</th>
-            <th> </th>
+            <th></th>
           </tr>
         </tbody>
       </Table>
-      <h3>
-        <FaRupeeSign /> {totalAmount}
-        <Button>Check Out</Button>
-      </h3>
+
+      <div
+        style={{ textAlign: "right", marginBottom: "10px", marginTop: "20px" }}
+      >
+        <h3 style={{ marginRight: "40px", fontWeight: "bold" }}>
+          Total : <FaRupeeSign />
+          {totalAmount}
+        </h3>
+        <button
+          style={{ marginRight: "20px" }}
+          onClick={() => {
+
+          
+         const token = localStorage.getItem('userToken')   
+        
+           if(token){
+          navigate("/checkout")
+         } else{
+          navigate('/userlogin')   
+         }
+          
+          }}
+        >
+          CheckOut
+        </button>
+      </div>
     </>
   );
 }
 
 export default AddToCart
+
+

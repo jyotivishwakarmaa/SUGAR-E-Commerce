@@ -13,12 +13,9 @@ const cartSlice=createSlice({
         addToCart:(state,actions)=>{
             const data=state.cart.filter(e=>e.id==actions.payload.id)
 
-            if(data.length>=1){
-                alert('data is already added')
-            }else{
-               state.cart.push(actions.payload)
-               alert('product added')
-            }
+           
+            state.cart.push(actions.payload)
+           
         },
         dataIncrease:(state,actions)=>{
             const item=state.cart.find(e=>e.id==actions.payload.id)
@@ -30,7 +27,11 @@ const cartSlice=createSlice({
         dataDecrease:(state,actions)=>{
             const item=state.cart.find(e=>e.id==actions.payload.id)
 
-            if(item>1){
+            if(!item){
+                return
+            }
+
+            if(item.qnty>1){
                 item.qnty--
             }else{
                 state.cart=state.cart.filter(e=>e.id!==actions.payload.id)
@@ -43,12 +44,12 @@ const cartSlice=createSlice({
         cartEmpty:(state)=>{
             state.cart=[]
         },
-        // itemRemove:(state, actions)=>{
-
-        // }
+        itemRemove:(state, actions)=>{
+            state.cart= state.cart.filter(e=>e.id!=actions.payload.id);
+         }
     }
 })
 
-export const{addToCart,dataIncrease,dataDecrease,prodcutEmpty,cartEmpty}=cartSlice.actions
+export const{addToCart,dataIncrease,dataDecrease,prodcutEmpty,cartEmpty,itemRemove}=cartSlice.actions
 
 export default cartSlice.reducer

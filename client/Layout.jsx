@@ -9,6 +9,7 @@ import BackEndUrl from "./src/utils/BackEndUrl";
 import axios from "axios";
 import Home from "./src/Components/Home";
 import VideoCards from "./src/Components/VideoCards";
+import Imageslide from "./src/Components/imageslide";
 
 const Layout = () => {
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
       <Header />
       <Topvar />
       <Cards />
+      <Imageslide/>
       <VideoCards/>
       <Home />
       <Imagesec />

@@ -53,7 +53,7 @@ const AddProducts = () => {
     <>
       <div id="contain">
         <Form id='frm' >
-          <h2>Add Product</h2>
+          <h3>Add Product</h3>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label id='lavel' >Enter Product name</Form.Label>
             <Form.Control type="text" name='name' placeholder='Product name' onChange={handleInput}  />
@@ -74,10 +74,11 @@ const AddProducts = () => {
             <select name="category" onChange={handleInput} style={{width:"200px", padding:"8px", borderRadius:"6px"}} >
               Category
               <option value="">category</option>
-              <option value="eyes">Eyes</option>
-              <option value="face">Face</option>
-              <option value="lips">Lips</option>
-              <option value="skin">Skin</option>
+              <option value="eyes">EYES</option>
+              <option value="face">FACE</option>
+              <option value="lips">LIPS</option>
+              <option value="skin">SKIN</option>
+              <option value="nails">NAILS</option>
             </select>
           </Form.Group>
 

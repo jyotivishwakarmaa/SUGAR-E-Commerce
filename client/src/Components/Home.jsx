@@ -1,83 +1,89 @@
 import Carousel from "react-bootstrap/Carousel";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BackEndUrl from "../utils/BackEndUrl";
-import { FaIndianRupeeSign } from "react-icons/fa6";
-import { FaCircle } from "react-icons/fa";
 import axios from "axios";
-import pro1 from '../images/pro1.webp'
-import pro2 from "../images/pro2.webp";
-import pro3 from "../images/pro3.webp";
-import pro4 from "../images/pro4.webp";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Redux/cartSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
-
-  const dis=useDispatch()
+  const dis = useDispatch();
+  const cart = useSelector((state) => state.mycart.cart); 
   const [myData, setMydata] = useState([]);
 
   const loadData = async () => {
     let api = `${BackEndUrl}/product/homepage`;
     try {
       const response = await axios.get(api);
-      console.log(response.data);
       setMydata(response.data);
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     loadData();
   }, []);
 
-    
-   return(
-  <>
-  {
-    myData.map((e)=>{
-      return (
-        <>
-          <div className="card-container">
-            <Card 
-              style={{ width: "18rem", alignItems: "center", display:"flex", flexDirection:"column"}}
-              className="custom-card"
-            >
-              <Card.Img variant="top" src={e.defaultimage} />
-              <Card.Body>
-                <Card.Title>{e.name}</Card.Title>
-                <Card.Text>₹{e.price}</Card.Text>
-                <Card.Text>{e.description}</Card.Text>
-                <Card.Text>{e.category}</Card.Text>
+  const handleAddToCart = (product) => {
+    const exists = cart.find((item) => item.id === product._id);
 
-                <Button
-                  variant="primary"
-                  onClick={() =>
-                    dis(
-                      addToCart({
-                        id: e._id,
-                        name: e.name,
-                        price: e.price,
-                        description: e.description,
-                        category: e.category,
-                        image: e.defaultimage,
-                        qnty: 1,
-                      })
-                    )
-                  }
-                >
-                  Add to cart
-                </Button>
-              </Card.Body>
-            </Card>
-          </div>
-        </>
+    if (exists) {
+      toast.warning("Product already in cart");
+    } else {
+      dis(
+        addToCart({
+          id: product._id,
+          name: product.name,
+          price: product.price,
+          description: product.description,
+          category: product.category,
+          defaultimage: product.defaultimage,
+          qnty: 1,
+        })
       );
-    })
-   }
-  </>
+      toast.success("Product added to cart");
+    }
+  };
+
+  return (
+    <>
+      <div className="card-parent">
+        <h3
+          style={{
+            textAlign: "center",
+            marginBottom: "70px",
+            marginTop: "70px",
+          }}
+        >
+          _________________NEWLY ADDED PRODUCTS_________________
+        </h3>
+
+        <div className="card-con">
+          {myData.map((e) => (
+            <div className="card" key={e._id}>
+              <div className="card-img">
+                <img src={e.defaultimage} alt={e.name} />
+              </div>
+              <div className="card-content">
+                <p>{e.name}</p>
+                <p>PRICE : {e.price}</p>
+                <p>DESCRIPTION : {e.description}</p>
+                <p>CATEGORY : {e.category}</p>
+              </div>
+              <div>
+                <Button onClick={() => handleAddToCart(e)}>Add to cart</Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <ToastContainer position="top-right" autoClose={2000} />
+    </>
   );
 };
 

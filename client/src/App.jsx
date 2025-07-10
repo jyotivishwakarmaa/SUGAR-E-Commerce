@@ -7,8 +7,8 @@ import AddProduct from "./Admin/AddProducts";
 import Userlogin from "./User/Userlogin";
 import UserDash from "./User/UserDash";
 import UserRegister from "./User/UserRegister";
-import Home from "./Components/Home";
 import AddToCart from "./Redux/AddToCart";
+import CheckOut from "./Redux/CheckOut";
 
 function App() {
   return (
@@ -20,6 +20,10 @@ function App() {
 
         <Routes>
           <Route path="addtocart" element={<AddToCart />} />
+        </Routes>
+
+        <Routes>
+          <Route path="checkout" element={<CheckOut />} />
         </Routes>
         <Routes>
           <Route path="adminlogin" element={<AdminLogin />}></Route>

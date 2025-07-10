@@ -40,10 +40,10 @@ const UserRegister = () => {
           <h1>Register Yourself</h1>
 
           <div className="form-group">
-            <label style={{ fontSize: "20px" }}>Enter Name</label>
+            <label style={{ fontSize: "20px" }}>Enter Full Name</label>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Full Name"
               name="name"
               onChange={handleInput}
             />

@@ -43,7 +43,7 @@ const AdminLogin = async(req, res)=>{
 }     
   //JWT Authentication
 
-const Auth = async (req, res) => {
+const adminAuth = async (req, res) => {
   const token = req.header("x-token");
   console.log(token);
         
@@ -97,5 +97,5 @@ const saveProduct = async (req, res) => {
 module.exports = {
   AdminLogin,
   saveProduct,
-  Auth
+  adminAuth
 };

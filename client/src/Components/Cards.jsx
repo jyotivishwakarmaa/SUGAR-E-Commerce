@@ -12,7 +12,7 @@ const Cards = () => {
   return (
     <>
       <div className="card-sec">
-        <h2 id="h2">____________________FOR YOU____________________</h2>
+        <h3 id="h2">____________________FOR YOU____________________</h3>
         <div className="card-sec1">
           <div id="card1">
             <img src={img1} id="img" /> <br />
@@ -33,7 +33,8 @@ const Cards = () => {
           </div>
         </div>
 
-        <h1 id="h1">___________________NEW LAUNCHES__________________</h1>
+
+        <h3 id="h1">___________________NEW LAUNCHES__________________</h3>
 
         <div className="card-sec2">
           <div id="card1">
@@ -60,6 +61,7 @@ const Cards = () => {
             <p>RS. 599.00</p>
           </div>
         </div>
+       
       </div>
     </>
   );

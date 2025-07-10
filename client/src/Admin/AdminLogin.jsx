@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import BackEndUrl from "../utils/BackEndUrl";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+
+
 
 const AdminLogin = () => {
   const [adminId, setAdminId] = useState("");
@@ -21,11 +24,16 @@ const AdminLogin = () => {
         adminId: adminId,
         password: password,
       });
+
+     
       localStorage.setItem("adminid", response.data.admin._id);
       console.log(response.data.msg);
       console.log(response.data)
+      toast.success('login successfully!!')
       localStorage.setItem('token',response.data.token)
 
+
+    
       navigate("/admindash");
     } catch (error) {
       console.log(error.response.data.msg);
@@ -63,8 +71,10 @@ const AdminLogin = () => {
           <button type="submit">Log in</button>
         </form>
       </div>
+       <Toaster/>
     </>
   );
 };
 
 export default AdminLogin;
+  

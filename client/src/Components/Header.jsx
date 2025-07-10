@@ -6,6 +6,7 @@ import { BsFillBagHeartFill } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackEndUrl from '../utils/BackEndUrl';
+import Lips from '../Pages/Lips';
 
 const Header = () => {
 

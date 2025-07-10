@@ -5,6 +5,8 @@ import { LuLogOut } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FiPackage } from "react-icons/fi";
 import { RiSettings5Line } from "react-icons/ri";
+import {toast,  Toaster } from "react-hot-toast";
+
 
 const AdminDash = () => {
 
@@ -12,14 +14,15 @@ const AdminDash = () => {
 
   const logout = () => {
     localStorage.clear();
-    navigate("/");
+    toast.success('Log Out successfully!!')
+        navigate("/");
   };
 
   return (
     <>
       <div id="mainPG">
         <div id="topvar">
-          <h3>ADMIN Dashboard!</h3>
+          <h3>Welcome to ADMIN DASHBOARD!</h3>
 
           <Button id="btn2" onClick={logout}>
             <LuLogOut /> Log out!
@@ -57,6 +60,7 @@ const AdminDash = () => {
 
         <Outlet />
       </div>
+      <Toaster/>
     </>
   );
 };

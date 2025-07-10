@@ -375,11 +375,11 @@
   
   /* ========================== vdo cards ========================================= */
 
+/* Outer video section container */
 
-  /* Outer video section container */
 .card-vdo {
   padding: 80px 40px;
-  background: linear-gradient(135deg, #e1bee7, #ffe0b2, #f8bbd0);
+  /* background: linear-gradient(135deg, #e1bee7, #ffe0b2, #f8bbd0); */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -392,6 +392,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
+  /* background: linear-gradient(135deg, #f0d0e1, #f2b6d1, #da8aae); */
+  background-color: whitesmoke;
 }
 
 /* Video card styling */
@@ -399,16 +401,14 @@
   background: #fffafc;
   width: 360px;
   height: 500px;
-  padding: 24px;
+  padding: 0;
   border-radius: 20px;
-  text-align: center;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
   transition: transform 0.4s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
+  overflow: hidden;
+  position: relative;
   animation: fadeInCard 0.6s ease-in-out both;
+  cursor: pointer;
 }
 
 /* Hover lift effect */
@@ -417,26 +417,19 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Video styling */
+/* Video styling - full card */
 .vdo {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 20px;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 /* Zoom video on hover */
 .vdo-card:hover .vdo {
-  transform: scale(1.06);
-}
-
-/* Text styling */
-.vdo-card p {
-  margin: 10px 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #6a1b9a;
+  transform: scale(1.05);
 }
 
 /* Entry animation */
@@ -450,7 +443,6 @@
     transform: translateY(0);
   }
 }
-
 
 /* =============================== FOOTER ==================================*/
 
@@ -577,21 +569,19 @@
     justify-content: center;
     align-items:center;
     min-height: 100vh;
-    background: url('../images/lipstickss.jpg') no-repeat center center / cover;
+    background: linear-gradient(135deg, #e1c4ed, #f3f0ff);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   /* Login form styling */
   .login-form {
-    /* background-color: #94a084; */
-    /* background: rgba(0, 0, 0, 0.2); */
     padding: 40px 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     width: 100%;
     /* height: 450px; */
     max-width: 500px;
-    border: 2px solid black;
+    border: 1px solid rgb(59, 59, 59);
     
   }
   
@@ -657,9 +647,11 @@
     font-weight: 500;
   }
 
+  
+
   /* ======================================== AdminDash ============================================ */
 
-
+/* 
 #mainPG{
     height: 100vh;
     background: url('../Admin//adminimages/jyotii.jpg') no-repeat center center / cover
@@ -683,13 +675,13 @@
   color:antiquewhite;
   text-align: center;
 } */
-
+/* 
 #btn2{
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 40px; */
     /* padding-top: 0;
     padding-bottom: 0; */
-    background-color: #ff5b77;
+    /* background-color: #ff5b77;
     border-radius: 15px;
     margin-right: 20px;
     color: black;
@@ -704,11 +696,11 @@
 #btn2:hover{
     color: black;
     background-color: pink;
-}
+} */ 
 
 
 /* ===============================Form======================================= */
-
+/* 
 #contain{
   margin: auto;
   width: 25%;
@@ -753,67 +745,329 @@
   color: white;
   background-color: rgb(216, 128, 128);
 }
-  
+   */
 
-/* =================================Sidebar================================== */
 
-.sidetab{
-max-width: 100px;
-background: transparent;
-
-}
-.sidetab ul{
-  display: flex;
-  width: 150%;
-  text-align: center;
-  flex-direction: column;
-  gap: 30px;
-  margin-right: 0;
-  height: 650px;
-  margin-left: 0;
-  padding-left: 0;
-  padding-right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.sidetab li{
-background:none;
-
-}
-
-.sidetab li #link{
-  color: white;
-  text-decoration: none;
-}
-.sidetab li #link:hover{
-  color: #ff5b77;
-}
-/* ====================================== userloginform ==================================== */
-
-.login-containerr{
-  min-height: 100vh;
-  background: url('../images/lipstickss.jpg') no-repeat center center / cover;
+/* Form Container */
+#contain {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  margin: auto;
+  /* min-height: 100vh; */
+  background: linear-gradient(135deg, #f8e8ff, #f3f0ff);
+  /* padding: 40px 20px; */
 }
-.login-form {
-  /* background-color: #94a084; */
-  background: rgba(0, 0, 0, 0.6);
-  padding: 40px 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+
+/* Form Styling */
+#frm {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 500px;
-  border: 2px solid black;
+  max-width: 600px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Form Header */
+#frm h3 {
+  text-align: center;
+  color: #6a1b9a;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+/* Labels */
+#frm label {
+  font-weight: 500;
+  color: #4a148c;
+  margin-bottom: 8px;
+}
+
+/* Inputs */
+#frm input,
+#frm select {
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+#frm input:focus,
+#frm select:focus {
+  border-color: #9c27b0;
+  box-shadow: 0 0 5px rgba(156, 39, 176, 0.2);
+  outline: none;
+}
+
+/* File input spacing */
+#frm input[type="file"] {
+  background-color: #f9f6fd;
+  padding: 10px;
+}
+
+/* Button */
+#btn {
+  background-color: #ba68c8;
+  border: none;
+  padding: 12px 24px;
+  margin-top: 15px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+#btn:hover {
+  background-color: #ab47bc;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ====================================== userloginform ==================================== */
+/* Page background */
+.login-containerr {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f9f0fb, #e8d6f0, #f4e6fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+}
+
+/* Login form box */
+.login-form {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading */
+.login-form h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #6a1b9a;
+  font-weight: bold;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #5a2d82;
+}
+
+/* Input styling */
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #ab47bc;
+  box-shadow: 0 0 6px rgba(171, 71, 188, 0.3);
+  outline: none;
+}
+
+/* Buttons */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #ba68c8;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #8e24aa;
+  transform: translateY(-2px);
+}
+
+/* Link-like paragraphs */
+.login-form p {
+  font-size: 14px;
+  color: #7b1fa2;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-form p:hover {
+  color: #4a148c;
+  text-decoration: underline;
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ============================================ userdash ======================================== */
 
+/* Main container */
+#mainPG {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f5f0fa, #ece4f6);
+  color: #333;
+}
 
+/* Top header bar */
+#topvar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+#topvar h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Logout button */
+#btn2 {
+  background-color: #c084fc;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+}
+
+#btn2:hover {
+  background-color: #a855f7;
+  transform: scale(1.05);
+}
+
+/* Sidebar */
+.sidetab {
+  width: 250px;
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  padding-top: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  z-index: 9;
+}
+
+.sidetab ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidetab ul li {
+  padding: 15px 30px;
+  transition: all 0.3s ease;
+}
+
+#link {
+  text-decoration: none;
+  color: #4b006e;
+  font-size: 17px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s ease;
+}
+
+.sidetab ul li:hover {
+  background: #e0bbf9;
+  transform: translateX(5px);
+  border-left: 4px solid #a855f7;
+}
+
+.sidetab ul li:hover #link {
+  color: #6b21a8;
+}
+
+/* Welcome text */
+h2 {
+  margin-left: 270px;
+  margin-top: 100px;
+  font-size: 22px;
+  color: #5a189a;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Outlet content */
+.outlet-content {
+  margin-left: 270px;
+  margin-top: 90px;
+  padding: 40px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================================================== */
+/* 
 #dash{
 
   display: flex;
@@ -857,35 +1111,93 @@ background:none;
   color: rgb(154, 241, 212);
   text-align: center;
   padding-top: 50px;
+} */
+
+/* ======================================= addproducts by admin Cards ===================================== */
+.card-parent {
+  width: 100%;
+  padding: 40px;
+  background: linear-gradient(135deg, #fff4f9, #f0faff);
 }
 
-/* ============================================= addproducts Cards ============================================= */
-
-* Container to hold multiple cards in columns */
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
+/* Grid layout for exactly 4 per row */
+.card-con {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  max-width: 1200px;
+  margin: auto;
   gap: 30px;
   justify-content: center;
-  padding: 30px;
-  background-color: #f9f9f9;
 }
 
-/* Individual card styling */
-.custom-card {
+/* Card Styling */
+.card {
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeInUp 0.6s ease both;
-  background: #fff;
-  position: relative;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  animation: fadeInCard 0.4s ease-in-out both;
 }
 
-/* Fade-up animation */
-@keyframes fadeInUp {
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+}
+
+/* Card Image */
+.card-img img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.card-content {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.card-content p {
+  margin: 6px 0;
+  color: #4a4a4a;
+  font-size: 0.95rem;
+}
+
+/* Button styling */
+.card button {
+  background-color: #8e24aa;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.card button:hover {
+  background-color: #a94fc9;
+  transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeInCard {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -893,51 +1205,158 @@ background:none;
   }
 }
 
-/* Hover effect */
-.custom-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Image style */
-.custom-card img {
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.custom-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Card Title */
-.custom-card .card-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Card Text */
-.custom-card .card-text {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* Button hover effect */
-.custom-card .btn-primary {
-  background-color: #0e9f6e;
-  border: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.custom-card .btn-primary:hover {
-  background-color: #0b7d57;
-}
-
 /* ============================================= add to cart =================================== */
 
 
-#cart-head{
+/* Page background */
+#cart-head {
+  padding: 20px;
   text-align: center;
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7, #f8bbd0);
+  color: #4a148c;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Table styles */
+table {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-top: 60px;
+}
+
+thead {
+  background: #ce93d8;
+  color: white;
+  font-weight: bold;
+}
+
+thead th {
+  padding: 15px;
+  text-align: center;
+}
+
+tbody tr:hover {
+  background-color: #e89ab5;
+  transition: 0.3s ease;
+}
+
+tbody td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  color: #333;
+}
+
+tbody img {
+  border-radius: 8px;
+}
+/* Button styles */
+button, .btn {
+  transition: all 0.3s ease;
+  border-radius: 6px !important;
+  font-weight: 500;
+  background-color: #ba68c8;  /* Slightly darker on hover */
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(206, 147, 216, 0.3);
+}
+
+/* Hover effects */
+button:hover, .btn:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+  background-color: #d144ea;  /* Light purple */
+
+  box-shadow: 0 6px 12px rgba(186, 104, 200, 0.4);
+}
+
+/* Checkout section */
+#checkout-summary {
+  margin: 30px 0;
+  text-align: right;
+  padding-right: 50px;
+}
+
+#checkout-summary h2 {
+  font-size: 1.5rem;
+  color: #6a1b9a;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#checkout-summary button {
+  padding: 10px 20px;
+  background-color: #ab47bc;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#checkout-summary button:hover {
+  background-color: #9c27b0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 0.85rem;
+  }
+
+  tbody td, thead th {
+    padding: 10px;
+  }
+
+  #checkout-summary {
+    padding-right: 20px;
+    text-align: center;
+  }
+
+  #checkout-summary h2 {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* ===================================== image slide ================================================== */
+.slider-container {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomFade 8s ease-in-out infinite; /* ⬅️ Increased from 8s to 15s */
+  border-radius: 12px;
+}
+
+/* Keyframes for zoom out and fade */
+@keyframes zoomFade {
+  0% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
