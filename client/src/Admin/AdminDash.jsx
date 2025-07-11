@@ -45,6 +45,12 @@ const AdminDash = () => {
             </li>
 
             <li>
+              <Link to="order" id="link">
+                 <FiPackage /> Customer Orders
+              </Link>
+            </li>
+
+            <li>
               <Link to="setting" id="link">
                 <RiSettings5Line /> Settings
               </Link>
@@ -60,7 +66,7 @@ const AdminDash = () => {
 
         <Outlet />
       </div>
-      <Toaster/>
+      <Toaster />
     </>
   );
 };

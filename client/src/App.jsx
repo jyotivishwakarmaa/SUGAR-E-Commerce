@@ -9,6 +9,7 @@ import UserDash from "./User/UserDash";
 import UserRegister from "./User/UserRegister";
 import AddToCart from "./Redux/AddToCart";
 import CheckOut from "./Redux/CheckOut";
+import CustomerOrder from "./Admin/adminimages/CustomerOrder";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="admindash" element={<AdminDash />}>
             <Route path="addproduct" element={<AddProduct />} />
+            <Route path="customer" element={<CustomerOrder/>} />
           </Route>
         </Routes>
 

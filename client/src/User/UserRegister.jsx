@@ -74,7 +74,7 @@ const UserRegister = () => {
             <input
               type="number"
               placeholder="Contact"
-              name='contact'
+              name="contact"
               onChange={handleInput}
             />
           </div>
@@ -85,6 +85,26 @@ const UserRegister = () => {
               type="text"
               placeholder="Address"
               name="address"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="form-group">
+            <label style={{ fontSize: "20px" }}>Enter City</label>
+            <input
+              type="text"
+              placeholder="city"
+              name="city"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="form-group">
+            <label style={{ fontSize: "20px" }}>Enter Pincode</label>
+            <input
+              type="number"
+              placeholder="pincode"
+              name="pincode"
               onChange={handleInput}
             />
           </div>

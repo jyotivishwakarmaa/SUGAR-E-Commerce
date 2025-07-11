@@ -1,6 +1,7 @@
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const ProductModel = require('../Models/ProductModel')
 const adminModel = require('../Models/AdminModel')
+const orderModel = require('../Models/OrderModel')
 const jwt=require('jsonwebtoken')
 const cloudinary = require('../cloudnary');
 const multer =require('multer');
@@ -92,10 +93,17 @@ const saveProduct = async (req, res) => {
 };
 
  
+const ourOrder = async (req, res) => {
+  const orderr = await orderModel.find();
+  res.status(200).send(orderr);
+};
+
 
 
 module.exports = {
   AdminLogin,
   saveProduct,
-  adminAuth
+  adminAuth,
+  ourOrder
+
 };

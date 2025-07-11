@@ -4,7 +4,7 @@ const userModel = require('../Models/UserModel')
  const bcrypt=require('bcryptjs')
 
 const userRegistration = async(req, res)=>{
-    const { name, email, password, contact, address} = req.body
+    const { name, email, password, contact, address, city, pincode} = req.body
        //console.log(req.body);
       // res.send('kkkkk')
       const salt = await bcrypt.genSalt(10);
@@ -16,7 +16,9 @@ const userRegistration = async(req, res)=>{
                 email: email,
                 password: hash,
                 contact: contact,
-                address: address
+                address: address,
+                city:city,
+                pincode:pincode
             })
                 res.status(200).send("user created!!")
       } catch (error) {
@@ -45,7 +47,7 @@ const userLogin=async(req, res)=>{
            const token = await jwt.sign({id: user._id}, process.env.JWT,{expiresIn: '20days'});
            console.log(token);
            
-            res.status(200).send({msg: "Login!",token:token})
+            res.status(200).send({msg: "Login!",token:token,data:user})
         } catch (error) {
             console.log(error);
             
@@ -68,11 +70,20 @@ const userLogin=async(req, res)=>{
       const user = await adminModel.findById(verify.id).select("-password");
       res.send(user);
     };
+
+
+    const getUser = async(req, res)=>{
+        const User = await userModel.findById(req.query.userid);
+        console.log(User);
+        res.send(User)
+        
+    }
     
-module.exports={
-    userLogin,
-    userRegistration,
-    userAuth
-}    
+module.exports = {
+  userLogin,
+  userRegistration,
+  userAuth,
+  getUser
+};    
 
 

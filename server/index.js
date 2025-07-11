@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const adminRoute = require('./Routes/AdminRoute');
 const userRoute = require('./Routes/UserRoute')
 const productRoute =require('./Routes/ProductRoute')
-
+const paymentRoute = require("./Routes/Payment")
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -24,6 +24,7 @@ mongoose.connect(process.env.DBCON).then(()=>{
 app.use('/admin', adminRoute)
 app.use('/user', userRoute)
 app.use('/product', productRoute)
+app.use('/api/payment', paymentRoute)
 
 
 app.listen(Port, ()=>{
