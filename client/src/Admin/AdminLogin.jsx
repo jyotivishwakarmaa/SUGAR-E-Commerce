@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import BackEndUrl from "../utils/BackEndUrl";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-
-
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 const AdminLogin = () => {
   const [adminId, setAdminId] = useState("");
@@ -25,15 +25,15 @@ const AdminLogin = () => {
         password: password,
       });
 
-     
       localStorage.setItem("adminid", response.data.admin._id);
       console.log(response.data.msg);
-      console.log(response.data)
-      toast.success('login successfully!!')
-      localStorage.setItem('token',response.data.token)
+      console.log(response.data);
+      toast.success("Admin Login successfully!!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500); // wait 1 sec
+      localStorage.setItem("token", response.data.token);
 
-
-    
       navigate("/admindash");
     } catch (error) {
       console.log(error.response.data.msg);
@@ -42,9 +42,11 @@ const AdminLogin = () => {
 
   return (
     <>
+      <Header />
+      <Outlet />
       <div className="login-container">
         <form className="login-form" onSubmit={handleSubmit}>
-          <h1>Admin Login</h1>
+          <h1 style={{color:"black"}}>Admin Login</h1>
 
           <div className="form-group">
             <label style={{ fontSize: "20px" }}>Enter ID</label>
@@ -71,7 +73,8 @@ const AdminLogin = () => {
           <button type="submit">Log in</button>
         </form>
       </div>
-       <Toaster/>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Footer />
     </>
   );
 };

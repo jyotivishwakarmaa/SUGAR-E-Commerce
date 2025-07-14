@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const dis = useDispatch();
+  const navigate = useNavigate();
+
   const cart = useSelector((state) => state.mycart.cart); 
   const [myData, setMydata] = useState([]);
 
@@ -67,7 +69,7 @@ const Home = () => {
           {myData.map((e) => (
             <div className="card" key={e._id}>
               <div className="card-img">
-                <img src={e.defaultimage} alt={e.name} />
+                <img src={e.defaultimage} alt={e.name} onClick={()=>{navigate(`/productdis/${e._id}`)}}  />
               </div>
               <div className="card-content">
                 <p>{e.name}</p>

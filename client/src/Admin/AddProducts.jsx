@@ -3,7 +3,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import BackEndUrl from '../utils/BackEndUrl';
 import axios from 'axios';
-import { Radius } from 'lucide-react';
+import { toast, Toaster } from "react-hot-toast";
+
+
 const AddProducts = () => {
     
     const[inp,setInp]=useState({})
@@ -29,7 +31,8 @@ const AddProducts = () => {
          e.preventDefault()
         
           let api=`${BackEndUrl}/admin/productsave`;
-
+        
+          
          const formData=new FormData()
 
          for(const e in inp){
@@ -47,7 +50,11 @@ const AddProducts = () => {
             console.log(res.data)
          })
          console.log(formData)
-      }    
+
+         toast.success("Product added successfully!");
+      } 
+    
+       
 
   return (
     <>
@@ -92,8 +99,12 @@ const AddProducts = () => {
           </Button>
         </Form>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
+
+
+
 
 export default AddProducts

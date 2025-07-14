@@ -6,7 +6,10 @@ import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
 import { FaRupeeSign } from "react-icons/fa";
 import { Outlet, useNavigate } from 'react-router-dom';
-import Imageslide from '../Components/imageslide';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddToCart = () => {
 
@@ -49,13 +52,14 @@ const AddToCart = () => {
 
   return (
     <>
-
-    <img src="src/images/ban4.webp" style={{width:"100%", height:"500px"}} />
+    <Header/>
+    <img src="src/images/ban2.webp" style={{width:"100%", height:"500px", borderRadius:"20px"}} />
       <div id="cart-head">
-        <h1>CART</h1>
+        <h1 style={{fontWeight:"700"}}>CART</h1>
       </div>
 
       {/* <Imageslide /> */}
+   
       <Outlet />
 
       <Table hover>
@@ -75,10 +79,10 @@ const AddToCart = () => {
           {ans}
           <tr>
             <th colSpan="6">
-              <b style={{ marginLeft: "50px" }}>TOTAL AMOUNT: </b>
+              <b style={{ marginLeft: "50px", fontSize:"20px" }}>TOTAL AMOUNT: </b>
             </th>
 
-            <th>{totalAmount}</th>
+            <th style={{fontSize:"20px"}}>{totalAmount}</th>
             <th></th>
           </tr>
         </tbody>
@@ -87,12 +91,12 @@ const AddToCart = () => {
       <div
         style={{ textAlign: "right", marginBottom: "10px", marginTop: "20px" }}
       >
-        <h3 style={{ marginRight: "40px", fontWeight: "bold" }}>
+        <h3 style={{ marginRight: "40px", fontWeight: "bold"}}>
           Total : <FaRupeeSign />
           {totalAmount}
-        </h3>
+        </h3> <br />
         <button
-          style={{ marginRight: "20px" }}
+          style={{ marginRight: "30px", width:"200px" }}
           onClick={() => {
 
           
@@ -101,14 +105,30 @@ const AddToCart = () => {
            if(token){
           navigate("/checkout")
          } else{
-          navigate('/userlogin')   
-         }
+          // navigate('/userlogin') 
           
-          }}
+          toast.warn("⚠️ Please login first to proceed!", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+    
+          setTimeout(() => {
+            navigate('/userlogin');
+          }, 3000);           // Wait for toast to show before redirecting
+        }
+      }}
+   
         >
           CheckOut
         </button>
-      </div>
+      </div> <br /><br />
+      <Footer/>
+      <ToastContainer />
     </>
   );
 }

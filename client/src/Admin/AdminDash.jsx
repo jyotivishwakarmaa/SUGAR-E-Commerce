@@ -14,8 +14,10 @@ const AdminDash = () => {
 
   const logout = () => {
     localStorage.clear();
-    toast.success('Log Out successfully!!')
-        navigate("/");
+    toast.success("Admin Log-Out successfully!!");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000); // wait 1 sec
   };
 
   return (
@@ -29,7 +31,7 @@ const AdminDash = () => {
           </Button>
         </div>
         {/* <hr style={{ color: "white" }} /> */}
-        <h2 style={{ color: "white" }}>Welcome!</h2>
+        <h3 style={{ color: "white" }}>Welcome!</h3>
         <div className="sidetab">
           <ul>
             <li>
@@ -45,8 +47,8 @@ const AdminDash = () => {
             </li>
 
             <li>
-              <Link to="order" id="link">
-                 <FiPackage /> Customer Orders
+              <Link to="customerorder" id="link">
+                <FiPackage /> Customer Orders
               </Link>
             </li>
 
@@ -66,7 +68,7 @@ const AdminDash = () => {
 
         <Outlet />
       </div>
-      <Toaster />
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

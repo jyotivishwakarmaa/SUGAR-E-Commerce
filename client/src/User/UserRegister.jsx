@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import BackEndUrl from '../utils/BackEndUrl';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { toast, Toaster } from "react-hot-toast";
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const UserRegister = () => {
     const nav = useNavigate()
@@ -25,7 +28,13 @@ const UserRegister = () => {
             
             const response = await axios.post(api, inp);
             console.log(response);
-            nav('/userlogin')
+
+             toast.success("User Registered successfully!!");
+                    setTimeout(() => {
+                      navigate("/");
+                    }, 1500); // wait 1 sec
+            
+                nav('/userlogin')
 
         } catch (error) {
             console.log(error);
@@ -35,9 +44,11 @@ const UserRegister = () => {
 
   return (
     <>
+      <Header />
+      <Outlet />
       <div className="login-containerr">
         <div className="login-form">
-          <h1>Register Yourself</h1>
+          <h1 style={{color:"black"}}>Register Yourself</h1>
 
           <div className="form-group">
             <label style={{ fontSize: "20px" }}>Enter Full Name</label>
@@ -110,7 +121,10 @@ const UserRegister = () => {
           </div>
           <button onClick={handleSubmit}>Register</button>
         </div>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
+
+      <Footer />
     </>
   );
 }

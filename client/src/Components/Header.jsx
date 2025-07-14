@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { FaHome } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackEndUrl from '../utils/BackEndUrl';
 import Lips from '../Pages/Lips';
+import Search from '../Pages/Search';
+
 
 const Header = () => {
 
@@ -39,10 +40,25 @@ const Header = () => {
       }
     }
   }
-    useEffect(()=>{
-      auth()
-    },[])
+   useEffect(() => {
+     auth();
 
+     const header = document.getElementById("header");
+     const menu = document.getElementById("menu");
+
+     const handleScroll = () => {
+       if (window.scrollY > 100) {
+         header?.classList.add("scrolled");
+         menu?.classList.add("scrolled");
+       } else {
+         header?.classList.remove("scrolled");
+         menu?.classList.remove("scrolled");
+       }
+     };
+
+     window.addEventListener("scroll", handleScroll);
+     return () => window.removeEventListener("scroll", handleScroll);
+   }, []);
 
   return (
     <>
@@ -55,11 +71,11 @@ const Header = () => {
         </div>
         <div className="mnu">
           <div id="header">
-            <img src="src/images/SUGAR_Logo.avif" />
+            <img src="../src/images/SUGAR_Logo.avif" />
 
             <div id="icon1">
+                <i id='iconA'>  <Search/> </i>
             <i id='iconC'>  <FaHome  /></i>
-              <i id='iconA'> <FaSearch /> </i>
               <i id='iconB'>  <FaUserCircle onClick={handleUser} /></i>
               <i id='iconD'>  <BsFillBagHeartFill onClick={handleCart} /></i>
             </div>

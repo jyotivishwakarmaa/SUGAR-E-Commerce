@@ -1,4 +1,5 @@
 const productModel = require("../Models/ProductModel");
+
 const homeDisplay = async (req, res) => {
   try {
     const Product = await productModel.find();
@@ -8,6 +9,35 @@ const homeDisplay = async (req, res) => {
   }
 };
 
+
+const productDisplay = async(req, res)=>{
+
+  const { id } = req.query;
+  const Product = await productModel.findById(id);
+  res.status(200).send(Product);
+}
+
+
+  const productSearch = async(req, res)=>{
+    // console.log(req.body);
+    // res.send("okkk")
+
+    const {search} = req.body;
+
+    const proSearch = await productModel.find({
+
+      $or:[
+        {name:search.toUpperCase()},
+        {category:search.toLowerCase()}
+      ]
+    })
+    res.send(proSearch)
+    
+  }     
+
+
 module.exports = {
   homeDisplay,
+  productDisplay,
+  productSearch,
 };

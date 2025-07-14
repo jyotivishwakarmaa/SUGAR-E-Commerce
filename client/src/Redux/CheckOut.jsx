@@ -4,22 +4,31 @@ import { useNavigate } from "react-router-dom";
 import BackEndUrl from "../utils/BackEndUrl";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import checkbg from '../images/check.jpg';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const CheckOut = () => {
 
     const navigate = useNavigate();
+    
 
     const[myData, setMydata] = useState({});
+
     const cartData = useSelector(state=>state.mycart.cart);
+    console.log(cartData)
+
 
     const loadData = async()=>{
         let api = `${BackEndUrl}/user/getuser/?userid=${localStorage.getItem('userid')}`
+        try{
         const response = await axios.get(api);
         setMydata(response.data);
+        // setProdata(response.data)
         console.log(response.data);
+        }
+        catch(err){
+            toast.error("Failed to load user data!");
+        }
         
     }
         useEffect(()=>{
@@ -28,6 +37,7 @@ const CheckOut = () => {
             }
 
             loadData()
+          
         }, [])
 
 
@@ -89,37 +99,42 @@ const CheckOut = () => {
         }        
   return (
     <>
-    <img src={checkbg} style={{width:"100%", maxHeight:"500px"}}/>
-      <h1 style={{textAlign:"center"}}>CheckOut</h1>
+      {/* <img src={checkbg} style={{width:"100%", maxHeight:"500px"}}/> */}
+    
+      <div className="checkout-page">
+        <h1 className="chkhead">CHECK-OUT</h1>
+        
+        <div className="checkout-container">
+      
+          <form className="checkout-form">
+            <h3 style={{ textAlign: "center" }}>All Details</h3>
+            <label>Name:</label>
+            <input type="text" value={myData.name || ""} readOnly />
 
-      <div className="checkout-container">
-        <form className="checkout-form">
-          <h3 style={{textAlign:"center"}}>All Details</h3>
-          <label>Name:</label>
-          <input type="text" value={myData.name || ""} readOnly />
+            <label>Email:</label>
+            <input type="email" value={myData.email || ""} readOnly />
 
-          <label>Email:</label>
-          <input type="email" value={myData.email || ""} readOnly />
+            <label>Shipping Address:</label>
+            <input type="text" value={myData.address || ""} readOnly />
 
-          <label>Shipping Address:</label>
-          <input type="text" value={myData.address || ""} readOnly />
+            <label>City:</label>
+            <input type="text" value={myData.city || ""} readOnly />
 
-          <label>City:</label>
-          <input type="text" value={myData.city || ""} readOnly />
+            <label>Contact:</label>
+            <input type="number" value={myData.contact || ""} readOnly />
 
-          <label>Contact:</label>
-          <input type="number" value={myData.contact || ""} readOnly />
+            <label>Pincode:</label>
+            <input type="number" value={myData.pincode || ""} readOnly />
+          </form>
 
-          <label>Pincode:</label>
-          <input type="number" value={myData.pincode || ""} readOnly />
-        </form>
-
-        <button type="button" id="BTN" onClick={handlePay}>
-          Proceed to Pay
-        </button>
+          <button type="button" id="BTN" onClick={handlePay}>
+            Proceed to Pay
+          </button>
+        </div>
       </div>
     </>
   );
 }
+
 
 export default CheckOut

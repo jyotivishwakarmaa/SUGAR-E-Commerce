@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-brand">
           <img
-            src="src/images/footerimages.png"
+            src="../src/images/footerimages.png"
             alt="Sugar Cosmetics"
             className="sugar-logo"
           />

@@ -93,17 +93,19 @@ const saveProduct = async (req, res) => {
 };
 
  
-const ourOrder = async (req, res) => {
+const customerOrder = async (req, res) => {
+    
+
   const orderr = await orderModel.find();
+  console.log(orderr)
   res.status(200).send(orderr);
 };
-
 
 
 module.exports = {
   AdminLogin,
   saveProduct,
   adminAuth,
-  ourOrder
+  customerOrder
 
 };
