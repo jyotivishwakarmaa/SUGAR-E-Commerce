@@ -24,7 +24,7 @@ function App() {
   useEffect(()=>{
     const loaderTimeout = setTimeout(()=>{
       setShowLoader(false);
-    }, 4000)
+    }, 3000)
 
     const dotInterval = setInterval(()=>{
       setDotCount((prev)=> (prev % 3) + 1);
@@ -49,7 +49,7 @@ function App() {
                   <div className="orbit-circle orbit-circle2"></div>
                   <div className="orbit-circle orbit-circle3"></div>
                 </div>
-                <p className="orbit-text">LADING, please wait...</p>
+                <p className="orbit-text">LOADING...</p>
               </div>
             </div>
           </>

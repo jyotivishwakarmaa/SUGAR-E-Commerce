@@ -22,8 +22,9 @@ const Search = () => {
 
         try {
             const response = await axios.post(api, {search:search})
-            console.log(response.data);
-            
+             console.log(response.data);
+
+
         } catch (error) {
             console.log(error);
             
@@ -37,10 +38,9 @@ const Search = () => {
           style={{ cursor: "pointer", fontSize: "24px" }}
           onClick={() => setIsOpen(!isOpen)}
         >
-        <FaSearch />
+          <FaSearch />
         </span>
 
-        
         <input
           ref={inputRef}
           type="text"
@@ -58,12 +58,14 @@ const Search = () => {
           }}
         />
 
-        
         {isOpen && (
-         <button onClick={handleSearch} className="search-btn">Search</button>
-        
+          <button onClick={handleSearch} className="search-btn">
+            Search
+          </button>
         )}
       </div>
+
+    
     </>
   );
 }

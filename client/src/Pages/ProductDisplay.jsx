@@ -54,7 +54,7 @@ const ProductDisplay = () => {
       <Header />
       <br />
       <br />
-      <br />
+    
       <div className="product-container">
         <div className="product-left">
           <img className="main-image" src={DefaultImage} alt="Main product" />
@@ -89,7 +89,7 @@ const ProductDisplay = () => {
       </div>{" "}
       <br />
       <br />
-      <br />
+
       <Footer />
     </>
   );

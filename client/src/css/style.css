@@ -1712,7 +1712,7 @@ button:hover, .btn:hover {
   justify-content: center;
   gap: 50px;
   padding: 60px 20px;
-  margin-top: 100px; /* ✅ Space below the header */
+  margin-top: 140px; /* ✅ Space below the header */
   /* background: linear-gradient(135deg, #fdf6ff, #f2f9ff); */
   background: url('../images//check.jpg') no-repeat center center;
   animation: fadeIn 0.6s ease-in-out;
